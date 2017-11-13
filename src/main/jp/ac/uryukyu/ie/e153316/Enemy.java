@@ -22,10 +22,15 @@ public class Enemy extends LivingThing {
 
     @Override
     public void wounded(int damage) {
-        hitPoint -= damage;
-        if (hitPoint < 0) {
-            dead = true;
-            System.out.printf("モンスター%sは倒れた。\n", name);
+        int hp = getHitPoint();
+        boolean de = getDead();
+        String na = getName();
+        hp -= damage;
+        setHitPoint(hp);
+        if (hp < 0) {
+            de = true;
+            setDead(de);
+            System.out.printf("モンスター%sは倒れた。\n", na);
         }
     }
 }
